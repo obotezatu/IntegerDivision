@@ -29,4 +29,21 @@ public class Step {
 	public void setDividerMultiple(long dividerMultiple) {
 		this.dividerMultiple = dividerMultiple;
 	}
+
+	@Override
+	public boolean equals(Object someObject) {
+
+		if (someObject == this) {
+			return true;
+		}
+		if (!(someObject instanceof Step)) {
+			return false;
+		}
+
+		Step step = (Step) someObject;
+
+		return Long.compare(this.getPartialDividend(), step.getPartialDividend()) == 0
+				&& Long.compare(this.getDivideResult(), step.getDivideResult()) == 0
+				&& Long.compare(this.getDividerMultiple(), step.getDividerMultiple()) == 0;
+	}
 }

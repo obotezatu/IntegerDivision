@@ -18,8 +18,9 @@ public class IntegerDivision {
 			}
 		}
 		System.out.println("----------------------------------");
-		Division div = new Division();
-		DivFormatter formatter = new DivFormatter();	
-		System.out.println(formatter.format(div.divide(dividend, divider)));
+		Division division = new Division();
+		DivisionFormatter formatter = new DivisionFormatter();	
+		System.out.println(formatter.format(division.divide(dividend, divider)));
+		//ErrorFormat.divisionFormatterFormat();
 	}
 }

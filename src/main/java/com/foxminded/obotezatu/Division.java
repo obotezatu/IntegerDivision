@@ -15,7 +15,7 @@ public class Division {
 			dividerMultiple = (partialDividend / divider) * divider;
 			if (dividerMultiple != 0) {
 				Step divisionSteps = new Step();
-				divisionSteps.setDivideResult(dividend / divider);
+				divisionSteps.setDivideResult(partialDividend / divider);
 				divisionSteps.setPartialDividend(partialDividend);
 				divisionSteps.setDividerMultiple(dividerMultiple);
 				partialDividend = partialDividend - dividerMultiple;

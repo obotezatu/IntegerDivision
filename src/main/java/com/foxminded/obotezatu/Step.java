@@ -32,14 +32,12 @@ public class Step {
 
 	@Override
 	public boolean equals(Object someObject) {
-
 		if (someObject == this) {
 			return true;
 		}
 		if (!(someObject instanceof Step)) {
 			return false;
 		}
-
 		Step step = (Step) someObject;
 
 		return Long.compare(this.getPartialDividend(), step.getPartialDividend()) == 0

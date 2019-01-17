@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class DivisionFormatterTest {
-
 	@Test
 	public void testDivisionFormatterFormat() {
 		Division division = new Division();

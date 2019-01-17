@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class IntegerDivision {
 
 	public static void main(String[] args) {
-		
 		long dividend;
 		long divider; 
 		try (Scanner scanner = new Scanner(System.in)){

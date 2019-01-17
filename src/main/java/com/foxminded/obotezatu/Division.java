@@ -3,23 +3,25 @@ package com.foxminded.obotezatu;
 public class Division {
 
 	public DivisionResult divide(long dividend, long divider) {
-
 		DivisionResult divisionResult = new DivisionResult();
 		divisionResult.setDividend(dividend);
 		divisionResult.setDivider(divider);
 		long[] dividendDigits = splitDividend(dividend);
 		long partialDividend = 0;
-		long dividerMultiple = 0;
-		for (int i = 0; i < dividendDigits.length; i++) {
-			partialDividend = partialDividend * 10 + dividendDigits[i];
-			dividerMultiple = (partialDividend / divider) * divider;
+		for (long digit : dividendDigits) {
+			partialDividend = partialDividend * 10 + digit;
+			long dividerMultiple = (partialDividend / divider) * divider;
 			if (dividerMultiple != 0) {
-				Step divisionSteps = new Step();
-				divisionSteps.setDivideResult(partialDividend / divider);
-				divisionSteps.setPartialDividend(partialDividend);
-				divisionSteps.setDividerMultiple(dividerMultiple);
+				Step divisionStep = new Step();
+				divisionStep.setDivideResult(partialDividend / divider);
+				divisionStep.setPartialDividend(partialDividend);
+				divisionStep.setDividerMultiple(dividerMultiple);
 				partialDividend = partialDividend - dividerMultiple;
-				divisionResult.getSteps().add(divisionSteps);
+				divisionResult.getSteps().add(divisionStep);
+			}
+			else {
+				Step divisionStep = new Step();
+				divisionResult.getSteps().add(divisionStep);
 			}
 		}
 		return divisionResult;

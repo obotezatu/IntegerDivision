@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DivisionResult {
-
 	private long dividend;
 	private long divider;
 	private List<Step> steps = new ArrayList<>();
@@ -34,24 +33,21 @@ public class DivisionResult {
 	}
 
 	public long getFinalDivideResult() {
-		long finalDivideResult=0;
-		for (Step element: steps) {
-			finalDivideResult=(finalDivideResult*10) + element.getDivideResult();
+		long finalDivideResult = 0;
+		for (Step step : steps) {
+			finalDivideResult = (finalDivideResult * 10) + step.getDivideResult();
 		}
 		return finalDivideResult;
 	}
 
 	@Override
 	public boolean equals(Object someObject) {
-
 		if (someObject == this) {
 			return true;
 		}
-
 		if (!(someObject instanceof DivisionResult)) {
 			return false;
 		}
-
 		DivisionResult divisionResult = (DivisionResult) someObject;
 
 		return Long.compare(this.getDividend(), divisionResult.getDividend()) == 0

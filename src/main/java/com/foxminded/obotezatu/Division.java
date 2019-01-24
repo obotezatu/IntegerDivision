@@ -11,18 +11,14 @@ public class Division {
 		for (long digit : dividendDigits) {
 			partialDividend = partialDividend * 10 + digit;
 			long dividerMultiple = (partialDividend / divider) * divider;
+			Step divisionStep = new Step();
 			if (dividerMultiple != 0) {
-				Step divisionStep = new Step();
 				divisionStep.setDivideResult(partialDividend / divider);
 				divisionStep.setPartialDividend(partialDividend);
 				divisionStep.setDividerMultiple(dividerMultiple);
 				partialDividend = partialDividend - dividerMultiple;
-				divisionResult.getSteps().add(divisionStep);
 			}
-			else {
-				Step divisionStep = new Step();
-				divisionResult.getSteps().add(divisionStep);
-			}
+			divisionResult.getSteps().add(divisionStep);
 		}
 		return divisionResult;
 	}

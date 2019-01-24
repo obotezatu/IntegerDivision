@@ -32,26 +32,11 @@ public class DivisionResult {
 		this.steps = steps;
 	}
 
-	public long getFinalDivideResult() {
-		long finalDivideResult = 0;
+	public long getResult() {
+		long result = 0;
 		for (Step step : steps) {
-			finalDivideResult = (finalDivideResult * 10) + step.getDivideResult();
+			result = (result * 10) + step.getDivideResult();
 		}
-		return finalDivideResult;
-	}
-
-	@Override
-	public boolean equals(Object someObject) {
-		if (someObject == this) {
-			return true;
-		}
-		if (!(someObject instanceof DivisionResult)) {
-			return false;
-		}
-		DivisionResult divisionResult = (DivisionResult) someObject;
-
-		return Long.compare(this.getDividend(), divisionResult.getDividend()) == 0
-				&& Long.compare(this.getDivider(), divisionResult.getDivider()) == 0
-				&& steps.equals(divisionResult.steps);
+		return result;
 	}
 }

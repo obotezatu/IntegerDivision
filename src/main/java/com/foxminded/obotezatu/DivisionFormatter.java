@@ -1,36 +1,42 @@
 package com.foxminded.obotezatu;
 
 import java.util.Formatter;
+import java.util.Iterator;
 
 public class DivisionFormatter {
 
 	public String format(DivisionResult divisionResult) {
-		if (divisionResult.getSteps().isEmpty()) {
+		if ((divisionResult.getDividend() < divisionResult.getDivider()) || divisionResult.getDividend() == 0) {
 			return "0";
 		}
 		String dash = "--";
 		int dividendLength = String.valueOf(divisionResult.getDividend()).length();
 		StringBuilder indent = new StringBuilder();
 		StringBuilder formattedResult = new StringBuilder();
+		Iterator<Step> stepsIterator = divisionResult.getSteps().iterator();
+		Step currentStep = stepsIterator.next();
+		if (currentStep.getDividerMultiple() == 0) {
+			currentStep = stepsIterator.next();
+		}
 		try (Formatter divisionFormatter = new Formatter(formattedResult)) {
-			divisionFormatter.format("_%" + dividendLength + "d | %d%n", divisionResult.getDividend(),divisionResult.getDivider());
-			divisionFormatter.format(" %-" + dividendLength + "d |--------%n",divisionResult.getSteps().get(0).getDividerMultiple());
-			divisionFormatter.format(" %-" + dividendLength + "s | %d%n", dash, divisionResult.getFinalDivideResult());
-			for (int i = 1; i < divisionResult.getSteps().size(); i++) {
-				if (divisionResult.getSteps().get(i).getPartialDividend() != 0 && divisionResult.getSteps().get(i).getDividerMultiple() != 0) {
+			divisionFormatter.format("_%" + dividendLength + "d | %d%n", divisionResult.getDividend(),
+					divisionResult.getDivider());
+			divisionFormatter.format(" %-" + dividendLength + "d |--------%n", currentStep.getDividerMultiple());
+			divisionFormatter.format(" %-" + dividendLength + "s | %d%n", dash, divisionResult.getResult());
+			while (stepsIterator.hasNext()) {
+				currentStep = stepsIterator.next();
+				if (currentStep.getPartialDividend() != 0 && currentStep.getDividerMultiple() != 0) {
 					indent.append(" ");
-					divisionFormatter.format("%s_%s%n", indent, divisionResult.getSteps().get(i).getPartialDividend());
-					divisionFormatter.format("%s% d%n", indent, divisionResult.getSteps().get(i).getDividerMultiple());
+					divisionFormatter.format("%s_%s%n", indent, currentStep.getPartialDividend());
+					divisionFormatter.format("%s% d%n", indent, currentStep.getDividerMultiple());
 					divisionFormatter.format(" %s%s%n", indent, dash);
-				}
-				else {
+				} else {
 					indent.append(" ");
 				}
 			}
+			indent.append(" ");
 			divisionFormatter.format("%s% d", indent,
-					(divisionResult.getSteps().get(divisionResult.getSteps().size() - 1).getPartialDividend())
-							- (divisionResult.getSteps().get(divisionResult.getSteps().size() - 1)
-									.getDividerMultiple()));
+					(currentStep.getPartialDividend() - currentStep.getDividerMultiple()));
 		}
 		return formattedResult.toString();
 	}

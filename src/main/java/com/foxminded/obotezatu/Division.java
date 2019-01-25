@@ -13,11 +13,11 @@ public class Division {
 			long dividerMultiple = (partialDividend / divider) * divider;
 			Step divisionStep = new Step();
 			if (dividerMultiple != 0) {
-				divisionStep.setDivideResult(partialDividend / divider);
-				divisionStep.setPartialDividend(partialDividend);
-				divisionStep.setDividerMultiple(dividerMultiple);
-				partialDividend = partialDividend - dividerMultiple;
+				  divisionStep.setDivideResult(partialDividend / divider);
+				  divisionStep.setPartialDividend(partialDividend);
+				  divisionStep.setDividerMultiple(dividerMultiple);
 			}
+			partialDividend = partialDividend - dividerMultiple;
 			divisionResult.getSteps().add(divisionStep);
 		}
 		return divisionResult;
@@ -32,4 +32,12 @@ public class Division {
 		}
 		return dividendDigits;
 	}
+
+	/*private Step createStep(long partialDividend, long dividerMultiple, long divider) {
+		Step divisionStep = new Step();
+		divisionStep.setDivideResult(partialDividend / divider);
+		divisionStep.setPartialDividend(partialDividend);
+		divisionStep.setDividerMultiple(dividerMultiple);
+		return divisionStep;
+	}*/
 }

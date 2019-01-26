@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class IntegerDivisionTest {
 
-	Division division;
+	private Division division;
 
 	@Before
 	public void setUp() {

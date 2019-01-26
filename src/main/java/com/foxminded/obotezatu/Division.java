@@ -3,6 +3,9 @@ package com.foxminded.obotezatu;
 public class Division {
 
 	public DivisionResult divide(long dividend, long divider) {
+		if (divider == 0) {
+			throw new ArithmeticException("The divider cannot be 0!");
+		}
 		DivisionResult divisionResult = new DivisionResult();
 		divisionResult.setDividend(dividend);
 		divisionResult.setDivider(divider);
@@ -32,12 +35,4 @@ public class Division {
 		}
 		return dividendDigits;
 	}
-
-	/*private Step createStep(long partialDividend, long dividerMultiple, long divider) {
-		Step divisionStep = new Step();
-		divisionStep.setDivideResult(partialDividend / divider);
-		divisionStep.setPartialDividend(partialDividend);
-		divisionStep.setDividerMultiple(dividerMultiple);
-		return divisionStep;
-	}*/
 }

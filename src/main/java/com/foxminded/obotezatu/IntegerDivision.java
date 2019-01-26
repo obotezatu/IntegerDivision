@@ -12,9 +12,6 @@ public class IntegerDivision {
 			dividend = scanner.nextLong();
 			System.out.println("Input divider: ");
 			divider = scanner.nextLong();
-			if (divider == 0) {
-				throw new ArithmeticException("The divider cannot be 0!");
-			}
 		}
 		System.out.println("----------------------------------");
 		Division division = new Division();

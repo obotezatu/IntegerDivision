@@ -4,19 +4,19 @@ import java.util.Iterator;
 
 public class DivisionFormatter {
 
+	final private String DASH = "--";
+	
 	public String format(DivisionResult divisionResult) {
 		if ((divisionResult.getDividend() < divisionResult.getDivider()) || divisionResult.getDividend() == 0) {
 			return "0";
 		}
 		StringBuilder formattedResult = new StringBuilder();
 		Iterator<Step> stepsIterator = divisionResult.getSteps().iterator();
-		formattedResult.append(formatHead(divisionResult, stepsIterator));
-		formattedResult.append(formatBody(divisionResult, stepsIterator));
+		formattedResult.append(formatHead(divisionResult, stepsIterator)).append(formatBody(divisionResult, stepsIterator));
 		return formattedResult.toString();
 	}
 
 	private String formatHead(DivisionResult divisionResult, Iterator<Step> stepsIterator) {
-		String dash = "--";
 		int dividendLength = String.valueOf(divisionResult.getDividend()).length();
 		StringBuilder formattedResult = new StringBuilder();
 		Step currentStep = stepsIterator.next();
@@ -27,7 +27,7 @@ public class DivisionFormatter {
 				divisionResult.getDivider()));
 		formattedResult
 				.append(String.format(" %-" + dividendLength + "d |--------%n", currentStep.getDividerMultiple()));
-		formattedResult.append(String.format(" %-" + dividendLength + "s | %d%n", dash, divisionResult.getResult()));
+		formattedResult.append(String.format(" %-" + dividendLength + "s | %d%n", DASH, divisionResult.getResult()));
 		return formattedResult.toString();
 	}
 
@@ -35,17 +35,14 @@ public class DivisionFormatter {
 		StringBuilder formattedResult = new StringBuilder();
 		StringBuilder indent = new StringBuilder();
 		Step currentStep = new Step();
-		String dash = "--";
 		while (stepsIterator.hasNext()) {
 			currentStep = stepsIterator.next();
+			indent.append(" ");
 			if (currentStep.getPartialDividend() != 0 && currentStep.getDividerMultiple() != 0) {
-				indent.append(" ");
 				formattedResult.append(String.format("%s_%s%n", indent, currentStep.getPartialDividend()));
 				formattedResult.append(String.format("%s% d%n", indent, currentStep.getDividerMultiple()));
-				formattedResult.append(String.format(" %s%s%n", indent, dash));
-			} else {
-				indent.append(" ");
-			}
+				formattedResult.append(String.format(" %s%s%n", indent, DASH));
+			} 
 		}
 		indent.append(" ");
 		formattedResult.append(

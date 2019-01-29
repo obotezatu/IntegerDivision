@@ -2,7 +2,7 @@ package com.foxminded.obotezatu;
 
 import java.util.Scanner;
 
-public class IntegerDivision {
+public class Main {
 
 	public static void main(String[] args) {
 		long dividend;

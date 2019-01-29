@@ -36,7 +36,6 @@ public class DivisionFormatter {
 		Step currentStep=null;
 		while (stepsIterator.hasNext()) {
 			currentStep = stepsIterator.next();
-			//indent.append(" ");
 			if (currentStep.getPartialDividend() != 0 && currentStep.getDividerMultiple() != 0) {
 				formattedResult.append(String.format("%s_%s%n", indent, currentStep.getPartialDividend()));
 				formattedResult.append(String.format("%s% d%n", indent, currentStep.getDividerMultiple()));
@@ -44,7 +43,6 @@ public class DivisionFormatter {
 			}
 			indent.append(" ");
 		}
-		//indent.append(" ");
 		formattedResult.append(
 				String.format("%s% d", indent, (currentStep.getPartialDividend() - currentStep.getDividerMultiple())));
 		return formattedResult.toString();

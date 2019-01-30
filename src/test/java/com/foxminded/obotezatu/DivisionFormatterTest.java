@@ -34,7 +34,7 @@ public class DivisionFormatterTest {
 	@Test
 	public void testThousandsDivisionFormatterFormat() {
 		expected.append("_10000 | 10").append(lineSeparator()).append(" 10    |--------").append(lineSeparator())
-				.append(" --    | 1000").append(lineSeparator()).append("     0");
+				.append(" --    | 1000").append(lineSeparator()).append("      0");
 		assertEquals(expected.toString(), divisionFormatter.format(division.divide(10000, 10)));
 	}
 

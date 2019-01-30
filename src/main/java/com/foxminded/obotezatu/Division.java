@@ -15,10 +15,10 @@ public class Division {
 			partialDividend = partialDividend * 10 + digit;
 			long dividerMultiple = (partialDividend / divider) * divider;
 			Step divisionStep = new Step();
-			if (dividerMultiple != 0) {
-				  divisionStep.setDivideResult(partialDividend / divider);
-				  divisionStep.setPartialDividend(partialDividend);
-				  divisionStep.setDividerMultiple(dividerMultiple);
+			if (dividerMultiple != 0 || digit == dividendDigits[dividendDigits.length - 1]) {
+				divisionStep.setDivideResult(partialDividend / divider);
+				divisionStep.setPartialDividend(partialDividend);
+				divisionStep.setDividerMultiple(dividerMultiple);
 			}
 			partialDividend = partialDividend - dividerMultiple;
 			divisionResult.getSteps().add(divisionStep);

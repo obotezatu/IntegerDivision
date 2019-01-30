@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DivisionResult {
+	
 	private long dividend;
 	private long divider;
 	private List<Step> steps = new ArrayList<>();
